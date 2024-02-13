@@ -1,10 +1,10 @@
-const { schema } = require('mongoose')
+const { Schema, Types } = require('mongoose')
 
-const reactModel = new schema(
+const reactModel = new Schema(
     {
         reactID: {
-            type: schema.types.objectID,
-            default:() => new Types.objectID(),
+            type: Schema.Types.ObjectId,
+            default:() => new Types.ObjectId(),
         },
         reactBody: {
             type: String,

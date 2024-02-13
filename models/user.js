@@ -1,9 +1,9 @@
-const { schema, models, types } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const thoughts = require('./thoughts');
 
-const userModel = new schema(
+const userModel = new Schema(
     {
-        username{
+        username: {
             type: String,
             required: true,
             unique: true,
@@ -12,19 +12,19 @@ const userModel = new schema(
             type: String,
             required: true,
             unique: true,
-            valid: true,
+            match: [/.+@.+\..+/, 'Must match an email address!'],
         },
-        friend: {
-            type: schema.types.objectID,
+        friend: [{
+            type: Schema.Types.ObjectID,
             ref: 'user',
-        },
-        thoughts: {
-            type: schema.types.objectID,
+        }],
+        thoughts: [{
+            type: Schema.Types.ObjectID,
             ref: 'thoughts',
-        }
+        }]
     }
 );
 
 const user = model('user', userModel);
 
-module.exports = user
+module.exports = user;

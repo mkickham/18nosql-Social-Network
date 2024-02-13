@@ -3,9 +3,10 @@ const { thoughts } = require('../models/index.js')
 const thoughtControls = {
     async getThoughts(req, res) {
         try {
-            const thoughts = await thoughts.find();
-            res.json(thoughts);
+            const thoughtData = await thoughts.find();
+            res.json(thoughtData);
         } catch(err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },

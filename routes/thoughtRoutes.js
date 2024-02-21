@@ -9,6 +9,8 @@ const {
     deleteReact
 } = require('../controllers/thoughtControls');
 
+// const { create } = require('../models/thoughts');
+
 router.route('/').get(getThoughts).post(createThought);
 
 router.route('/:getThoughtID').get(getThoughtID).put(updateThought).delete(deleteThought);
